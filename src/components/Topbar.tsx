@@ -1,31 +1,13 @@
 import { useState, useCallback } from 'react'
-import { flushSync } from 'react-dom'
 
-interface TopbarProps {
-  onToggle: () => void
-}
-
-export default function Topbar({ onToggle }: TopbarProps) {
+export default function Topbar() {
   const [spinning, setSpinning] = useState(false)
 
-  const handleDiamond = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleDiamond = useCallback(() => {
     if (spinning) return
     setSpinning(true)
     setTimeout(() => setSpinning(false), 560)
-
-    const rect = e.currentTarget.getBoundingClientRect()
-    document.documentElement.style.setProperty('--theme-x', `${rect.left + rect.width / 2}px`)
-    document.documentElement.style.setProperty('--theme-y', `${rect.top + rect.height / 2}px`)
-
-    if (!document.startViewTransition) {
-      onToggle()
-      return
-    }
-
-    document.startViewTransition(() => {
-      flushSync(() => onToggle())
-    })
-  }, [spinning, onToggle])
+  }, [spinning])
 
   return (
     <header
@@ -55,8 +37,7 @@ export default function Topbar({ onToggle }: TopbarProps) {
 
       <button
         onClick={handleDiamond}
-        aria-label="toggle light / dark theme"
-        title="toggle theme"
+        aria-label="spin"
         style={{
           appearance: 'none',
           background: 'none',
@@ -79,7 +60,6 @@ export default function Topbar({ onToggle }: TopbarProps) {
             background: 'var(--bg)',
             transform: 'rotate(45deg)',
             flexShrink: 0,
-            transition: spinning ? undefined : 'background 0.12s ease',
           }}
         />
       </button>

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import Topbar    from './components/Topbar'
 import Nav       from './components/Nav'
 import Hero      from './components/Hero'
@@ -9,14 +8,6 @@ import Contact   from './components/Contact'
 import Bottombar from './components/Bottombar'
 
 export default function App() {
-  const [theme, setTheme] = useState<'dark' | 'beige'>('dark')
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-  }, [theme])
-
-  const toggle = () => setTheme(t => t === 'dark' ? 'beige' : 'dark')
-
   return (
     <>
       <a
@@ -40,7 +31,7 @@ export default function App() {
         skip to content
       </a>
 
-      <Topbar onToggle={toggle} />
+      <Topbar />
       <Nav />
 
       <main>

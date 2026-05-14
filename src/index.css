@@ -13,16 +13,6 @@
   --blue:       #3b82f6;
 }
 
-[data-theme="beige"] {
-  --bg:         #e8e0ce;
-  --bg-card:    #ddd5c2;
-  --text:       #1a1a14;
-  --text-muted: #5a5248;
-  --text-dim:   #8a8278;
-  --rule:       #b8b0a0;
-  --gap:        #c8c0a8;
-  --blue:       #2563eb;
-}
 
 /* ── reset ────────────────────────────────────────────── */
 @layer base {
@@ -106,26 +96,6 @@
   background: var(--bg-card) !important;
 }
 
-/* ── theme transition ─────────────────────────────────── */
-::view-transition-old(root) {
-  animation: none;
-}
-
-::view-transition-new(root) {
-  clip-path: circle(0 at var(--theme-x, 95vw) var(--theme-y, 18px));
-  animation: theme-reveal 0.85s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes theme-reveal {
-  to { clip-path: circle(200vmax at var(--theme-x, 95vw) var(--theme-y, 18px)); }
-}
-
-@media (prefers-reduced-motion) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation-duration: 0.01ms !important;
-  }
-}
 
 /* ── diamond spin ──────────────────────────────────── */
 @keyframes diamond-spin {
