@@ -89,11 +89,10 @@
   top: 0;
   height: 100%;
   background: var(--text);
-  width: 0;
-  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.skill-bar-fill.in-view {
-  width: var(--target-width);
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ── link hover ───────────────────────────────────────── */
@@ -105,6 +104,27 @@
 }
 .project-card:hover {
   background: var(--bg-card) !important;
+}
+
+/* ── theme transition ─────────────────────────────────── */
+::view-transition-old(root) {
+  animation: none;
+}
+
+::view-transition-new(root) {
+  clip-path: circle(0 at var(--theme-x, 95vw) var(--theme-y, 18px));
+  animation: theme-reveal 0.85s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes theme-reveal {
+  to { clip-path: circle(200vmax at var(--theme-x, 95vw) var(--theme-y, 18px)); }
+}
+
+@media (prefers-reduced-motion) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01ms !important;
+  }
 }
 
 /* ── diamond spin ──────────────────────────────────── */

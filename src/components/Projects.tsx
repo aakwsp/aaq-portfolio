@@ -34,6 +34,30 @@ const PROJECTS = [
     icon: 'diamond' as const,
     url: '#',
   },
+  {
+    id: '05',
+    tag: 'web · react',
+    title: 'project-five',
+    desc: 'replace with your fifth project. a good description says what it does and why it was interesting to build.',
+    icon: 'circle' as const,
+    url: '#',
+  },
+  {
+    id: '06',
+    tag: 'systems · c++',
+    title: 'project-six',
+    desc: 'replace with your sixth project. stack tags go in the tag field above the title, not in the description.',
+    icon: 'square' as const,
+    url: '#',
+  },
+  {
+    id: '07',
+    tag: 'tool · python',
+    title: 'project-seven',
+    desc: 'replace with your seventh project. keep it to two sentences and lowercase throughout.',
+    icon: 'triangle' as const,
+    url: '#',
+  },
 ] as const
 
 type IconType = 'circle' | 'square' | 'triangle' | 'diamond'
@@ -66,9 +90,9 @@ function Card({ project, delay }: { project: typeof PROJECTS[number]; delay: num
       target={project.url !== '#' ? '_blank' : undefined}
       rel="noreferrer"
       className="project-card"
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay }}
+      initial={{ opacity: 0, y: 14 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay }}
       style={{
         display: 'block',
         position: 'relative',
@@ -123,7 +147,7 @@ function Card({ project, delay }: { project: typeof PROJECTS[number]; delay: num
           bottom: 16,
           right: 16,
           color: 'var(--text)',
-          opacity: 0.06,
+          opacity: 0.18,
           pointerEvents: 'none',
         }}
       >
@@ -143,13 +167,13 @@ export default function Projects() {
       {/* section header */}
       <motion.div
         ref={headRef}
-        initial={{ opacity: 0 }}
-        animate={headInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={headInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '0.75rem',
+          justifyContent: 'space-between',
           padding: '1.25rem 1.5rem',
           borderBottom: '0.5px solid var(--rule)',
         }}
@@ -163,7 +187,6 @@ export default function Projects() {
         }}>
           // projects
         </span>
-        <div style={{ flex: 1, height: '0.5px', background: 'var(--rule)' }} />
         <span style={{
           fontFamily: "'Space Mono', monospace",
           fontSize: '0.5rem',

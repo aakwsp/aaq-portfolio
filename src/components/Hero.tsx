@@ -78,7 +78,7 @@ export default function Hero() {
             marginBottom: '2rem',
             letterSpacing: '-0.01em',
           }}>
-            welcome to<br />my work.
+            i make things i'd<br />want to use.
           </h1>
 
           {/* body copy */}
@@ -96,14 +96,6 @@ export default function Hero() {
             good and exact.
           </p>
 
-          {/* decorative star divider */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }} aria-hidden="true">
-            <span style={{ color: 'var(--text-dim)', fontSize: '0.4375rem', lineHeight: 1 }}>✦</span>
-            <div style={{ flex: 1, height: '0.5px', background: 'var(--rule)' }} />
-            <span style={{ color: 'var(--text-dim)', fontSize: '0.4375rem', lineHeight: 1 }}>✦</span>
-            <div style={{ flex: 1, height: '0.5px', background: 'var(--rule)' }} />
-            <span style={{ color: 'var(--text-dim)', fontSize: '0.4375rem', lineHeight: 1 }}>✦</span>
-          </div>
         </div>
 
         {/* ── right column ────────────────────────────── */}

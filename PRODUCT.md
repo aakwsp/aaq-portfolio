@@ -6,34 +6,33 @@ brand
 
 ## Users
 
-Two audiences arriving simultaneously: recruiters and hiring managers scanning quickly to decide whether to reach out; and fellow engineers staying longer to read and evaluate craft and technical depth. The interface must reward a 10-second glance and a 3-minute read equally.
+Two audiences, arriving with different clocks. Recruiters and hiring managers scan in 10 seconds — they're deciding whether to reach out. Fellow engineers stay longer, reading for craft and technical depth. The site must land immediately for the scanner and hold up under scrutiny for the reader.
 
 ## Product Purpose
 
-A personal portfolio for moshi (aakwsp) — a software engineer whose identity is precision, depth, and care for interfaces. The site IS the argument: it demonstrates the same quality of thinking it claims. Success means a visitor leaves with a clear impression of a developer who is technically serious and aesthetically intentional.
+A personal portfolio for moshi (aakwsp) — a software engineer who cares deeply about design. The site is the argument: it demonstrates the same quality of attention it claims. Success means a visitor leaves thinking "this person is thoughtful about how things look and feel" — and believes it because the site proved it, not because it said so.
 
 ## Brand Personality
 
-Sharp, direct, confident. Not loud — the work earns the confidence. Opinionated without being aggressive. Every element has a reason to exist.
+Warm, personal, crafted. Precise without being cold. The feeling of something made by a person, not assembled from a template. Confidence that comes from care, not volume.
 
 ## References
 
-Bruno Simon as an aesthetic ceiling (technically impressive, memorable) but significantly restrained. The goal is that quality of impression without the chaos. Liquid glass as the dominant surface treatment — the current craft benchmark — done with taste: purposeful blur, real depth, not decorative slathering.
+Stripe as the primary reference: precise, dense with craft, not a single wasted element. The cleanliness is earned, not empty. That quality of "this was made by someone who sweats the details" is the target register.
 
 ## Anti-references
 
+- Corporate / resume-style portfolios: skill bars, timeline layouts, formal section headings, "About Me" copy, anything that reads like a LinkedIn profile converted to HTML
 - Generic SaaS landing pages: feature grids, gradient CTAs, testimonial carousels, stock-photo heroes
-- Corporate / resume-style: skill bars, formal section headings, timeline layouts, "About Me" copy
-- Glassmorphism as wallpaper: every surface blurred, rainbow gradients on everything, no hierarchy
 
 ## Design Principles
 
-1. **Practice what you preach.** The interface quality is the portfolio. If a button feels cheap, the argument collapses.
-2. **Colorful, not loud.** Color carries identity but never overwhelms. Saturation is used surgically — one bold moment per section, everything else quiet.
-3. **Liquid glass with purpose.** Every blurred/frosted surface earns it by creating real depth or separating layers. Not decoration.
-4. **Character over minimalism.** Restraint is not the goal. The goal is a distinct voice. If something feels too safe, it's too safe.
-5. **Depth over decoration.** Motion, shadow, and layering create the sense of a living interface. Effects serve the illusion of depth, not novelty.
+1. **Show, don't say.** If the site claims craft, every surface must prove it. A cheap button collapses the argument.
+2. **Warm precision.** Stripe's exactness, but with a human temperature. Not sterile — considered.
+3. **Authored, not filled in.** Every section should feel written and designed by the same person, not populated into a template.
+4. **Serve both clocks.** The 10-second visitor needs a strong visual hit. The 3-minute visitor needs depth to reward the stay.
+5. **Earn every element.** If a detail can't justify its presence — decoration, motion, color — remove it.
 
 ## Accessibility & Inclusion
 
-WCAG AA as a baseline. Reduced-motion users should get a graceful fallback for any aurora drift or entrance animations. Color is never the sole carrier of meaning.
+Best effort. Reduced-motion users get graceful fallbacks for any drift or entrance animations. Color is never the sole carrier of meaning.

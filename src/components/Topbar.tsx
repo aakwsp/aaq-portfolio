@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { flushSync } from 'react-dom'
 
 interface TopbarProps {
   onToggle: () => void
@@ -7,11 +8,23 @@ interface TopbarProps {
 export default function Topbar({ onToggle }: TopbarProps) {
   const [spinning, setSpinning] = useState(false)
 
-  const handleDiamond = useCallback(() => {
+  const handleDiamond = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     if (spinning) return
     setSpinning(true)
-    onToggle()
     setTimeout(() => setSpinning(false), 560)
+
+    const rect = e.currentTarget.getBoundingClientRect()
+    document.documentElement.style.setProperty('--theme-x', `${rect.left + rect.width / 2}px`)
+    document.documentElement.style.setProperty('--theme-y', `${rect.top + rect.height / 2}px`)
+
+    if (!document.startViewTransition) {
+      onToggle()
+      return
+    }
+
+    document.startViewTransition(() => {
+      flushSync(() => onToggle())
+    })
   }, [spinning, onToggle])
 
   return (

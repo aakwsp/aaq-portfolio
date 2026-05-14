@@ -22,7 +22,7 @@ function ContactCard({ card, delay }: { card: typeof CARDS[number]; delay: numbe
         borderBottom: '0.5px solid var(--rule)',
         transition: 'background 0.15s ease',
       }}
-      className={card.href ? 'contact-card' : ''}
+      className={card.href && card.href !== '#' ? 'contact-card' : ''}
     >
       <p style={{
         fontFamily: "'Space Mono', monospace",
@@ -49,9 +49,9 @@ function ContactCard({ card, delay }: { card: typeof CARDS[number]; delay: numbe
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay }}
+      initial={{ opacity: 0, y: 14 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay }}
     >
       {card.href && card.href !== '#' ? (
         <a
@@ -77,13 +77,13 @@ export default function Contact() {
       {/* section header */}
       <motion.div
         ref={headRef}
-        initial={{ opacity: 0 }}
-        animate={headInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={headInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '0.75rem',
+          justifyContent: 'space-between',
           padding: '1.25rem 1.5rem',
           borderBottom: '0.5px solid var(--rule)',
         }}
@@ -97,7 +97,6 @@ export default function Contact() {
         }}>
           // contact
         </span>
-        <div style={{ flex: 1, height: '0.5px', background: 'var(--rule)' }} />
         <span style={{
           fontFamily: "'Space Mono', monospace",
           fontSize: '0.5rem',

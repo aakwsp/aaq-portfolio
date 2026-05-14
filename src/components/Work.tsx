@@ -31,6 +31,20 @@ const ENTRIES: WorkEntry[] = [
     desc: 'replace this entry with your actual work history. keep everything lowercase. two sentences max per description.',
     tags: ['node.js', 'python', 'postgresql'],
   },
+  {
+    period: '2022 — 2023',
+    role: 'junior developer',
+    org: 'replace with employer',
+    desc: 'replace with an earlier role. good descriptions focus on what you shipped, not just what you used.',
+    tags: ['javascript', 'react', 'css'],
+  },
+  {
+    period: '2021 — 2022',
+    role: 'software intern',
+    org: 'replace with company',
+    desc: 'replace with your internship or earliest role. even short entries are worth including if the work was meaningful.',
+    tags: ['python', 'git', 'linux'],
+  },
 ]
 
 function WorkRow({ entry, delay, last }: { entry: WorkEntry; delay: number; last: boolean }) {
@@ -40,9 +54,9 @@ function WorkRow({ entry, delay, last }: { entry: WorkEntry; delay: number; last
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay }}
+      initial={{ opacity: 0, y: 14 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay }}
       style={{
         display: 'grid',
         gridTemplateColumns: '9rem 1fr',
@@ -131,13 +145,13 @@ export default function Work() {
       {/* section header */}
       <motion.div
         ref={headRef}
-        initial={{ opacity: 0 }}
-        animate={headInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={headInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '0.75rem',
+          justifyContent: 'space-between',
           padding: '1.25rem 1.5rem',
           borderBottom: '0.5px solid var(--rule)',
         }}
@@ -151,7 +165,6 @@ export default function Work() {
         }}>
           // work
         </span>
-        <div style={{ flex: 1, height: '0.5px', background: 'var(--rule)' }} />
         <span style={{
           fontFamily: "'Space Mono', monospace",
           fontSize: '0.5rem',
