@@ -105,21 +105,31 @@ export default function Hero() {
             justifyContent: 'center',
           }}
         >
-          {/* decorative kanji */}
-          <div
-            aria-hidden="true"
-            className="font-kanji"
-            style={{
-              fontSize: 'clamp(3rem, 8vw, 6.5rem)',
+          {/* decorative kanji + translation */}
+          <div style={{ marginBottom: '3rem' }}>
+            <div
+              className="font-kanji"
+              style={{
+                fontSize: 'clamp(3rem, 8vw, 6.5rem)',
+                color: 'var(--text-dim)',
+                lineHeight: 1,
+                fontWeight: 200,
+                letterSpacing: '0.06em',
+                userSelect: 'none',
+                marginBottom: '0.75rem',
+              }}
+            >
+              私の作品
+            </div>
+            <p style={{
+              ...mono,
+              fontSize: '0.5625rem',
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
               color: 'var(--text-dim)',
-              lineHeight: 1,
-              marginBottom: '3rem',
-              fontWeight: 200,
-              letterSpacing: '0.06em',
-              userSelect: 'none',
-            }}
-          >
-            私の作品
+            }}>
+              // my work.
+            </p>
           </div>
 
           {/* link rows */}

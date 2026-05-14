@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Topbar    from './components/Topbar'
 import Nav       from './components/Nav'
 import Hero      from './components/Hero'
@@ -5,9 +6,20 @@ import Projects  from './components/Projects'
 import Skills    from './components/Skills'
 import Work      from './components/Work'
 import Contact   from './components/Contact'
+import Fun       from './components/Fun'
 import Bottombar from './components/Bottombar'
 
 export default function App() {
+  const [clicks, setClicks] = useState(0)
+  const [funUnlocked, setFunUnlocked] = useState(false)
+
+  const handleDiamondClick = () => {
+    if (funUnlocked) return
+    const next = clicks + 1
+    setClicks(next)
+    if (next >= 3) setFunUnlocked(true)
+  }
+
   return (
     <>
       <a
@@ -31,7 +43,7 @@ export default function App() {
         skip to content
       </a>
 
-      <Topbar />
+      <Topbar onDiamondClick={handleDiamondClick} />
       <Nav />
 
       <main>
@@ -40,6 +52,7 @@ export default function App() {
         <Skills />
         <Work />
         <Contact />
+        {funUnlocked && <Fun />}
       </main>
 
       <Bottombar />

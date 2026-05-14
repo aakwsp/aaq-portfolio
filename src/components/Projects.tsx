@@ -1,5 +1,6 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
+import * as THREE from 'three'
 
 const PROJECTS = [
   {
@@ -62,54 +63,60 @@ const PROJECTS = [
 
 type IconType = 'circle' | 'square' | 'triangle' | 'diamond'
 
+const GEO_MAP: Record<IconType, () => THREE.BufferGeometry> = {
+  circle:   () => new THREE.IcosahedronGeometry(1.1, 1),
+  square:   () => new THREE.BoxGeometry(1.6, 1.6, 1.6),
+  triangle: () => new THREE.ConeGeometry(1.1, 2.0, 3),
+  diamond:  () => new THREE.OctahedronGeometry(1.3),
+}
+
+const SPD_MAP: Record<IconType, [number, number, number]> = {
+  circle:   [0.006, 0.009, 0.003],
+  square:   [0.005, 0.007, 0.004],
+  triangle: [0.007, 0.005, 0.006],
+  diamond:  [0.008, 0.006, 0.005],
+}
+
 function GeoIcon({ type }: { type: IconType }) {
-  const s = 80
-  return (
-    <svg
-      width={s} height={s} viewBox="0 0 80 80"
-      fill="none" strokeWidth="0.6"
-      stroke="currentColor"
-      style={{ display: 'block' }}
-    >
-      {type === 'circle' && <>
-        <circle cx="40" cy="40" r="36" />
-        <circle cx="40" cy="40" r="26" />
-        <circle cx="40" cy="40" r="16" />
-        <line x1="4" y1="40" x2="76" y2="40" />
-        <line x1="40" y1="4" x2="40" y2="76" />
-        <line x1="14.5" y1="14.5" x2="65.5" y2="65.5" />
-        <line x1="65.5" y1="14.5" x2="14.5" y2="65.5" />
-        <circle cx="40" cy="40" r="3" />
-      </>}
-      {type === 'square' && <>
-        <rect x="4" y="4" width="72" height="72" />
-        <rect x="16" y="16" width="48" height="48" />
-        <rect x="28" y="28" width="24" height="24" />
-        <line x1="4" y1="4" x2="76" y2="76" />
-        <line x1="76" y1="4" x2="4" y2="76" />
-        <line x1="4" y1="40" x2="76" y2="40" />
-        <line x1="40" y1="4" x2="40" y2="76" />
-      </>}
-      {type === 'triangle' && <>
-        <polygon points="40,4 76,72 4,72" />
-        <polygon points="40,18 65,66 15,66" />
-        <polygon points="40,33 52,60 28,60" />
-        <line x1="40" y1="4" x2="40" y2="72" />
-        <line x1="4" y1="72" x2="76" y2="72" />
-        <line x1="22" y1="38" x2="58" y2="38" />
-        <circle cx="40" cy="44" r="2" />
-      </>}
-      {type === 'diamond' && <>
-        <polygon points="40,2 78,40 40,78 2,40" />
-        <polygon points="40,14 66,40 40,66 14,40" />
-        <polygon points="40,26 54,40 40,54 26,40" />
-        <line x1="2" y1="40" x2="78" y2="40" />
-        <line x1="40" y1="2" x2="40" y2="78" />
-        <circle cx="40" cy="40" r="3" />
-        <circle cx="40" cy="40" r="8" />
-      </>}
-    </svg>
-  )
+  const ref = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = ref.current
+    if (!canvas) return
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true })
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
+    renderer.setSize(96, 96)
+
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100)
+    camera.position.z = 4
+
+    const geo = GEO_MAP[type]()
+    const mat = new THREE.MeshBasicMaterial({ color: 0xd8cab8, wireframe: true, transparent: true, opacity: 0.7 })
+    const mesh = new THREE.Mesh(geo, mat)
+    scene.add(mesh)
+
+    const spd = SPD_MAP[type]
+    let raf: number
+    const animate = () => {
+      raf = requestAnimationFrame(animate)
+      mesh.rotation.x += spd[0]
+      mesh.rotation.y += spd[1]
+      mesh.rotation.z += spd[2]
+      renderer.render(scene, camera)
+    }
+    animate()
+
+    return () => {
+      cancelAnimationFrame(raf)
+      geo.dispose()
+      mat.dispose()
+      renderer.dispose()
+    }
+  }, [type])
+
+  return <canvas ref={ref} style={{ display: 'block', width: 96, height: 96 }} />
 }
 
 function Card({ project, delay }: { project: typeof PROJECTS[number]; delay: number }) {

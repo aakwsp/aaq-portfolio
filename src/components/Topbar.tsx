@@ -1,13 +1,18 @@
 import { useState, useCallback } from 'react'
 
-export default function Topbar() {
+interface TopbarProps {
+  onDiamondClick?: () => void
+}
+
+export default function Topbar({ onDiamondClick }: TopbarProps) {
   const [spinning, setSpinning] = useState(false)
 
   const handleDiamond = useCallback(() => {
     if (spinning) return
     setSpinning(true)
     setTimeout(() => setSpinning(false), 560)
-  }, [spinning])
+    onDiamondClick?.()
+  }, [spinning, onDiamondClick])
 
   return (
     <header
