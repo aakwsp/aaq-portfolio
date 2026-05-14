@@ -63,18 +63,51 @@ const PROJECTS = [
 type IconType = 'circle' | 'square' | 'triangle' | 'diamond'
 
 function GeoIcon({ type }: { type: IconType }) {
-  const s = 64
+  const s = 80
   return (
     <svg
-      width={s} height={s} viewBox="0 0 64 64"
-      fill="none" strokeWidth="0.75"
+      width={s} height={s} viewBox="0 0 80 80"
+      fill="none" strokeWidth="0.6"
       stroke="currentColor"
       style={{ display: 'block' }}
     >
-      {type === 'circle'   && <circle cx="32" cy="32" r="30" />}
-      {type === 'square'   && <rect x="2" y="2" width="60" height="60" />}
-      {type === 'triangle' && <polygon points="32,3 61,61 3,61" />}
-      {type === 'diamond'  && <polygon points="32,2 62,32 32,62 2,32" />}
+      {type === 'circle' && <>
+        <circle cx="40" cy="40" r="36" />
+        <circle cx="40" cy="40" r="26" />
+        <circle cx="40" cy="40" r="16" />
+        <line x1="4" y1="40" x2="76" y2="40" />
+        <line x1="40" y1="4" x2="40" y2="76" />
+        <line x1="14.5" y1="14.5" x2="65.5" y2="65.5" />
+        <line x1="65.5" y1="14.5" x2="14.5" y2="65.5" />
+        <circle cx="40" cy="40" r="3" />
+      </>}
+      {type === 'square' && <>
+        <rect x="4" y="4" width="72" height="72" />
+        <rect x="16" y="16" width="48" height="48" />
+        <rect x="28" y="28" width="24" height="24" />
+        <line x1="4" y1="4" x2="76" y2="76" />
+        <line x1="76" y1="4" x2="4" y2="76" />
+        <line x1="4" y1="40" x2="76" y2="40" />
+        <line x1="40" y1="4" x2="40" y2="76" />
+      </>}
+      {type === 'triangle' && <>
+        <polygon points="40,4 76,72 4,72" />
+        <polygon points="40,18 65,66 15,66" />
+        <polygon points="40,33 52,60 28,60" />
+        <line x1="40" y1="4" x2="40" y2="72" />
+        <line x1="4" y1="72" x2="76" y2="72" />
+        <line x1="22" y1="38" x2="58" y2="38" />
+        <circle cx="40" cy="44" r="2" />
+      </>}
+      {type === 'diamond' && <>
+        <polygon points="40,2 78,40 40,78 2,40" />
+        <polygon points="40,14 66,40 40,66 14,40" />
+        <polygon points="40,26 54,40 40,54 26,40" />
+        <line x1="2" y1="40" x2="78" y2="40" />
+        <line x1="40" y1="2" x2="40" y2="78" />
+        <circle cx="40" cy="40" r="3" />
+        <circle cx="40" cy="40" r="8" />
+      </>}
     </svg>
   )
 }
@@ -144,10 +177,10 @@ function Card({ project, delay }: { project: typeof PROJECTS[number]; delay: num
         aria-hidden="true"
         style={{
           position: 'absolute',
-          bottom: 16,
-          right: 16,
+          bottom: 12,
+          right: 12,
           color: 'var(--text)',
-          opacity: 0.18,
+          opacity: 0.22,
           pointerEvents: 'none',
         }}
       >

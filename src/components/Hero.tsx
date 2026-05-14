@@ -21,9 +21,9 @@ export default function Hero() {
         aria-hidden="true"
         style={{
           position: 'absolute',
-          left: 18,
-          top: 72,
-          bottom: 0,
+          left: 40,
+          top: 'calc(72px + 10%)',
+          bottom: '10%',
           width: 4,
           display: 'flex',
           flexDirection: 'column',
@@ -126,7 +126,7 @@ export default function Hero() {
 
           {/* link rows */}
           <div>
-            {LINKS.map((link) => (
+            {LINKS.map((link, i) => (
               <a
                 key={link.label}
                 href={link.href}
@@ -139,7 +139,7 @@ export default function Hero() {
                   alignItems: 'center',
                   gap: '0.75rem',
                   padding: '1rem 0',
-                  borderBottom: '0.5px solid var(--rule)',
+                  borderBottom: i < LINKS.length - 1 ? '0.5px solid var(--rule)' : 'none',
                   color: 'var(--text-muted)',
                   fontSize: '0.6875rem',
                   transition: 'color 120ms ease',
@@ -160,8 +160,7 @@ export default function Hero() {
                   {link.label}
                 </span>
 
-                {/* ruled line */}
-                <div style={{ flex: 1, height: '0.5px', background: 'var(--rule)' }} />
+                <div style={{ flex: 1 }} />
 
                 {/* value */}
                 <span>{link.display}</span>

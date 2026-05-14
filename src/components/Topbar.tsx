@@ -36,8 +36,8 @@ export default function Topbar({ onToggle }: TopbarProps) {
         right: 0,
         zIndex: 200,
         height: 36,
-        background: 'var(--bg)',
-        borderBottom: '0.5px solid var(--rule)',
+        background: 'var(--text)',
+        borderBottom: '0.5px solid var(--text-muted)',
         display: 'flex',
         alignItems: 'center',
         padding: '0 1.25rem',
@@ -47,11 +47,11 @@ export default function Topbar({ onToggle }: TopbarProps) {
         letterSpacing: '0.14em',
       }}
     >
-      <span style={{ color: 'var(--text-muted)', whiteSpace: 'nowrap', flexShrink: 0 }}>
+      <span style={{ color: 'var(--bg)', whiteSpace: 'nowrap', flexShrink: 0 }}>
         designed by aakwsp // moshi
       </span>
 
-      <div style={{ flex: 1, height: '0.5px', background: 'var(--rule)' }} />
+      <div style={{ flex: 1, height: '0.5px', background: 'var(--bg-card)' }} />
 
       <button
         onClick={handleDiamond}
@@ -76,7 +76,7 @@ export default function Topbar({ onToggle }: TopbarProps) {
           style={{
             width: 8,
             height: 8,
-            background: 'var(--text-muted)',
+            background: 'var(--bg)',
             transform: 'rotate(45deg)',
             flexShrink: 0,
             transition: spinning ? undefined : 'background 0.12s ease',
