@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* ── color tokens ─────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --bg:         #0d0d0b;
+  --bg-card:    #111110;
+  --text:       #c8c0a8;
+  --text-muted: #908278;
+  --text-dim:   #6e685e;
+  --rule:       #252520;
+  --gap:        #1a1a16;
+  --blue:       #3b82f6;
+}
+
+[data-theme="beige"] {
+  --bg:         #e8e0ce;
+  --bg-card:    #ddd5c2;
+  --text:       #1a1a14;
+  --text-muted: #5a5248;
+  --text-dim:   #8a8278;
+  --rule:       #b8b0a0;
+  --gap:        #c8c0a8;
+  --blue:       #2563eb;
+}
+
+/* ── reset ────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    border-radius: 0 !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background 0.12s ease, color 0.12s ease;
+  }
+
+  /* DM Serif Display is served locally via @fontsource — guaranteed to load */
+  h1, h2, h3, h4 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  /* Noto Serif JP — CDN only, used for decorative kanji only */
+  .font-kanji {
+    font-family: 'Noto Serif JP', serif;
+  }
+
+  p { margin: 0; }
+  a { text-decoration: none; }
+
+  ::selection {
+    background: var(--text);
+    color: var(--bg);
+  }
+}
+
+/* ── focus ────────────────────────────────────────────── */
+:focus-visible {
+  outline: 0.5px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* ── progress bar ─────────────────────────────────────── */
+.skill-bar {
+  height: 1px;
+  background: var(--rule);
+  position: relative;
+  margin-top: 0.625rem;
+  margin-bottom: 0.5rem;
+}
+.skill-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--text);
+  width: 0;
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.skill-bar-fill.in-view {
+  width: var(--target-width);
+}
+
+/* ── link hover ───────────────────────────────────────── */
+.hero-link:hover {
+  color: var(--text) !important;
+}
+.contact-card:hover {
+  background: var(--bg-card) !important;
+}
+.project-card:hover {
+  background: var(--bg-card) !important;
+}
+
+/* ── diamond spin ──────────────────────────────────── */
+@keyframes diamond-spin {
+  from { transform: rotate(45deg); }
+  to   { transform: rotate(405deg); }
+}
+.diamond-spin {
+  animation: diamond-spin 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
