@@ -231,7 +231,7 @@ export default function Projects() {
       </motion.div>
 
       {/* 2×2 grid with gap borders */}
-      <div style={{
+      <div className="projects-grid" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         gridTemplateRows: 'auto auto',

@@ -25,6 +25,7 @@ export default function Nav() {
   return (
     <nav
       aria-label="primary navigation"
+      className="nav-links"
       style={{
         position: 'fixed',
         top: 36,

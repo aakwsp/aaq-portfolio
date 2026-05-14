@@ -85,6 +85,47 @@
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ── responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-color-bar {
+    flex-direction: row !important;
+    height: 4px !important;
+    margin: 0 !important;
+    align-self: auto !important;
+  }
+  .hero-left {
+    border-right: none !important;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .work-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.25rem !important;
+  }
+  .work-period {
+    padding-top: 0 !important;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .nav-links {
+    gap: 1.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* ── link hover ───────────────────────────────────────── */
 .hero-link:hover {
   color: var(--text) !important;

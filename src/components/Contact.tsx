@@ -108,7 +108,7 @@ export default function Contact() {
       </motion.div>
 
       {/* 2-column grid */}
-      <div style={{
+      <div className="contact-grid" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
       }}>

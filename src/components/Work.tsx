@@ -57,6 +57,7 @@ function WorkRow({ entry, delay, last }: { entry: WorkEntry; delay: number; last
       initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay }}
+      className="work-row"
       style={{
         display: 'grid',
         gridTemplateColumns: '9rem 1fr',
@@ -66,7 +67,7 @@ function WorkRow({ entry, delay, last }: { entry: WorkEntry; delay: number; last
       }}
     >
       {/* left: period */}
-      <div style={{ paddingTop: '0.125rem' }}>
+      <div className="work-period" style={{ paddingTop: '0.125rem' }}>
         <p style={{
           fontFamily: "'Space Mono', monospace",
           fontSize: '0.5625rem',

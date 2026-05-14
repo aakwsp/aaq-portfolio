@@ -136,7 +136,7 @@ export default function Skills() {
       </motion.div>
 
       {/* 3-column grid */}
-      <div style={{
+      <div className="skills-grid" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
       }}>

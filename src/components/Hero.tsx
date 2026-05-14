@@ -16,40 +16,38 @@ export default function Hero() {
       id="hero"
       style={{ position: 'relative', minHeight: '100vh', paddingTop: 72, overflow: 'hidden', background: 'var(--bg)' }}
     >
-      {/* quad-color bar — floats off the left edge */}
+      {/* hero grid: color bar | left | right */}
       <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          left: 40,
-          top: 'calc(72px + 10%)',
-          bottom: '10%',
-          width: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          zIndex: 2,
-          pointerEvents: 'none',
-        }}
-      >
-        {QUAD_COLORS.map((c) => (
-          <span key={c} style={{ flex: 1, background: c, display: 'block' }} />
-        ))}
-      </div>
-
-      {/* two-column grid */}
-      <div
+        className="hero-grid"
         style={{
           position: 'relative',
           zIndex: 1,
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: '4px 1fr 1fr',
           minHeight: 'calc(100vh - 72px)',
         }}
       >
+        {/* ── color bar ───────────────────────────────── */}
+        <div
+          aria-hidden="true"
+          className="hero-color-bar"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignSelf: 'stretch',
+            margin: '10% 0',
+          }}
+        >
+          {QUAD_COLORS.map((c) => (
+            <span key={c} style={{ flex: 1, background: c, display: 'block' }} />
+          ))}
+        </div>
+
         {/* ── left column ─────────────────────────────── */}
         <div
+          className="hero-left"
           style={{
-            padding: 'clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3.5rem) clamp(2.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
+            padding: 'clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3.5rem) clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 3.5rem)',
             borderRight: '0.5px solid var(--rule)',
             display: 'flex',
             flexDirection: 'column',
