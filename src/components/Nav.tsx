@@ -58,15 +58,6 @@ export default function Nav() {
         </a>
       ))}
 
-      <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={i}
-            aria-hidden="true"
-            style={{ width: 3, height: 3, background: 'var(--text-dim)' }}
-          />
-        ))}
-      </div>
     </nav>
   )
 }

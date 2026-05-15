@@ -83,7 +83,7 @@ function SkillCard({ skill, delay }: { skill: Skill; delay: number }) {
       </div>
 
       {/* label row */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div>
         <span style={{
           fontFamily: "'Space Mono', monospace",
           fontSize: '0.5rem',
@@ -92,14 +92,6 @@ function SkillCard({ skill, delay }: { skill: Skill; delay: number }) {
           color: 'var(--text-dim)',
         }}>
           {getLabel(skill.level)}
-        </span>
-        <span style={{
-          fontFamily: "'Space Mono', monospace",
-          fontSize: '0.5rem',
-          letterSpacing: '0.1em',
-          color: 'var(--text-dim)',
-        }}>
-          {skill.level}%
         </span>
       </div>
     </motion.div>

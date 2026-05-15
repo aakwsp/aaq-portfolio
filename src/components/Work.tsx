@@ -9,7 +9,22 @@ interface WorkEntry {
   tags: string[]
 }
 
-const ENTRIES: WorkEntry[] = []
+const ENTRIES: WorkEntry[] = [
+  {
+    period: '2024 — 2028/29',
+    role: 'bsc computer science',
+    org: "queen's university",
+    desc: 'going into third year in kingston, ontario. focused on systems programming and software engineering. actively pursuing cs internships and first industry roles.',
+    tags: ['kingston, on', 'expected 2028 — 2029'],
+  },
+  {
+    period: '2024 — 2025',
+    role: 'team member',
+    org: 'autodrive team',
+    desc: "part of queen's autonomous vehicle competition team in first year. early hands-on exposure to embedded systems and real-time software in a collaborative team environment.",
+    tags: ['autonomous vehicles', 'embedded systems'],
+  },
+]
 
 function WorkRow({ entry, delay, last }: { entry: WorkEntry; delay: number; last: boolean }) {
   const ref    = useRef<HTMLDivElement>(null)
@@ -136,7 +151,7 @@ export default function Work() {
           letterSpacing: '0.14em',
           color: 'var(--text-dim)',
         }}>
-          experience · chronological
+          education + experience
         </span>
       </motion.div>
 
@@ -191,7 +206,6 @@ export default function Work() {
                 {[
                   { key: 'currently', val: 'building personal projects + open source' },
                   { key: 'status',    val: 'open to opportunities' },
-                  { key: 'location',  val: 'ontario, canada' },
                 ].map(({ key, val }) => (
                   <div key={key} style={{ display: 'flex', alignItems: 'baseline', gap: '1rem' }}>
                     <span style={{

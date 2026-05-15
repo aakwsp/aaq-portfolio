@@ -89,7 +89,6 @@ export default function Hero() {
             marginBottom: '2.75rem',
           }}>
             building systems that breathe.<br />
-            interfaces that feel right.<br />
             obsessed with the space between<br />
             good and exact.
           </p>
