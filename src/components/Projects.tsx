@@ -47,10 +47,10 @@ const GEO_MAP: Record<IconType, () => THREE.BufferGeometry> = {
 }
 
 const SPD_MAP: Record<IconType, [number, number, number]> = {
-  circle:   [0.00067, 0.001, 0.00033],
-  square:   [0.0005, 0.00067, 0.0004],
-  triangle: [0.00067, 0.0005, 0.0006],
-  diamond:  [0.00083, 0.00067, 0.0005],
+  circle:   [0.00134, 0.002, 0.00066],
+  square:   [0.001, 0.00134, 0.0008],
+  triangle: [0.00134, 0.001, 0.0012],
+  diamond:  [0.00166, 0.00134, 0.001],
 }
 
 function GeoIcon({ type }: { type: IconType }) {
