@@ -105,7 +105,7 @@ export default function Hero() {
             justifyContent: 'center',
           }}
         >
-          {/* decorative kanji + translation */}
+          {/* decorative kanji */}
           <div style={{ marginBottom: '3rem' }}>
             <div
               className="font-kanji"
@@ -116,20 +116,10 @@ export default function Hero() {
                 fontWeight: 200,
                 letterSpacing: '0.06em',
                 userSelect: 'none',
-                marginBottom: '0.75rem',
               }}
             >
               私の作品
             </div>
-            <p style={{
-              ...mono,
-              fontSize: '0.5625rem',
-              letterSpacing: '0.22em',
-              textTransform: 'uppercase',
-              color: 'var(--text-dim)',
-            }}>
-              // my work.
-            </p>
           </div>
 
           {/* link rows */}
@@ -153,8 +143,7 @@ export default function Hero() {
                   transition: 'color 120ms ease',
                 }}
               >
-                {/* blue square dot */}
-                <div style={{ width: 6, height: 6, background: 'var(--blue)', flexShrink: 0 }} />
+                <div style={{ width: 6, height: 6, background: 'var(--text)', flexShrink: 0 }} />
 
                 {/* label */}
                 <span style={{

@@ -5,59 +5,35 @@ import * as THREE from 'three'
 const PROJECTS = [
   {
     id: '01',
-    tag: 'web · three.js',
+    tag: 'web · react · ts',
     title: 'aaq-portfolio',
-    desc: 'this site. built with glsl shaders, brutalist type hierarchy, and a monospace voice throughout. no rounded corners.',
+    desc: 'this site. a dark monospace portfolio with brutalist type hierarchy, three.js wireframe geometry on project cards, and an editorial grid layout. built with react, vite, and tailwind.',
     icon: 'circle' as const,
-    url: '#',
+    url: 'https://github.com/aakwsp/aaq-portfolio',
   },
   {
     id: '02',
-    tag: 'systems · rust',
-    title: 'project-two',
-    desc: 'replace with your second project. keep titles lowercase. geometry shifts per card — circle, square, triangle, diamond.',
+    tag: 'tool · next.js · gemini ai',
+    title: 'aaq-job-tracker',
+    desc: 'syncs your gmail with gemini ai to auto-extract job applications, track statuses, and surface an email timeline per company. sqlite backend, full manual editing, no spreadsheet required.',
     icon: 'square' as const,
-    url: '#',
+    url: 'https://github.com/aakwsp/aaq-job-tracker',
   },
   {
     id: '03',
-    tag: 'tool · cli',
-    title: 'project-three',
-    desc: 'replace with your third project. the geometric icon is pinned to the bottom-right at very low opacity.',
+    tag: 'discord · bot · wip',
+    title: 'aaq-valokwsp',
+    desc: 'a valorant stat tracker for discord. pulls live match history and player stats, surfaced directly in your server without leaving the app.',
     icon: 'triangle' as const,
-    url: '#',
+    url: 'https://github.com/aakwsp/valokwsp',
   },
   {
     id: '04',
-    tag: 'experiment · glsl',
-    title: 'project-four',
-    desc: 'replace with your fourth project. keep descriptions tight — two sentences max, lowercase throughout.',
+    tag: 'desktop · electron · wip',
+    title: 'aaq-youkwsp',
+    desc: 'a personalized youtube music desktop app built to replace the browser tab. cleaner ui, better controls, and a listening experience that actually feels like yours.',
     icon: 'diamond' as const,
-    url: '#',
-  },
-  {
-    id: '05',
-    tag: 'web · react',
-    title: 'project-five',
-    desc: 'replace with your fifth project. a good description says what it does and why it was interesting to build.',
-    icon: 'circle' as const,
-    url: '#',
-  },
-  {
-    id: '06',
-    tag: 'systems · c++',
-    title: 'project-six',
-    desc: 'replace with your sixth project. stack tags go in the tag field above the title, not in the description.',
-    icon: 'square' as const,
-    url: '#',
-  },
-  {
-    id: '07',
-    tag: 'tool · python',
-    title: 'project-seven',
-    desc: 'replace with your seventh project. keep it to two sentences and lowercase throughout.',
-    icon: 'triangle' as const,
-    url: '#',
+    url: 'https://github.com/aakwsp/youkwsp',
   },
 ] as const
 
@@ -71,10 +47,10 @@ const GEO_MAP: Record<IconType, () => THREE.BufferGeometry> = {
 }
 
 const SPD_MAP: Record<IconType, [number, number, number]> = {
-  circle:   [0.006, 0.009, 0.003],
-  square:   [0.005, 0.007, 0.004],
-  triangle: [0.007, 0.005, 0.006],
-  diamond:  [0.008, 0.006, 0.005],
+  circle:   [0.00067, 0.001, 0.00033],
+  square:   [0.0005, 0.00067, 0.0004],
+  triangle: [0.00067, 0.0005, 0.0006],
+  diamond:  [0.00083, 0.00067, 0.0005],
 }
 
 function GeoIcon({ type }: { type: IconType }) {
@@ -187,7 +163,7 @@ function Card({ project, delay }: { project: typeof PROJECTS[number]; delay: num
           bottom: 12,
           right: 12,
           color: 'var(--text)',
-          opacity: 0.22,
+          opacity: 0.5,
           pointerEvents: 'none',
         }}
       >

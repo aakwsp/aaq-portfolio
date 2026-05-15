@@ -3,22 +3,33 @@ import { motion, useInView } from 'framer-motion'
 
 interface Skill {
   name: string
-  level: number          /* 0–100 */
-  label: string
+  level: number   /* 0–100 */
+}
+
+function getLabel(level: number): string {
+  if (level >= 90) return 'expert'
+  if (level >= 75) return 'proficient'
+  if (level >= 60) return 'competent'
+  if (level >= 45) return 'familiar'
+  return 'learning'
 }
 
 const SKILLS: Skill[] = [
-  { name: 'typescript',       level: 90, label: 'advanced'     },
-  { name: 'three.js / webgl', level: 75, label: 'proficient'   },
-  { name: 'glsl shaders',     level: 65, label: 'proficient'   },
-  { name: 'react / next.js',  level: 85, label: 'advanced'     },
-  { name: 'rust',             level: 55, label: 'intermediate' },
-  { name: 'linux / bash',     level: 80, label: 'advanced'     },
-  { name: 'python',           level: 75, label: 'proficient'   },
-  { name: 'c / c++',          level: 60, label: 'intermediate' },
-  { name: 'git / devops',     level: 80, label: 'advanced'     },
-  { name: 'sql / postgres',   level: 70, label: 'proficient'   },
-  { name: 'docker / infra',   level: 65, label: 'proficient'   },
+  { name: 'linux / bash', level: 85 },
+  { name: 'c',            level: 80 },
+  { name: 'c++',          level: 80 },
+  { name: 'java',         level: 80 },
+  { name: 'c#',           level: 75 },
+  { name: 'matlab',       level: 70 },
+  { name: 'javascript',   level: 60 },
+  { name: 'typescript',   level: 60 },
+  { name: 'python',       level: 60 },
+  { name: 'sql',          level: 55 },
+  { name: 'electron',     level: 55 },
+  { name: 'react / next.js', level: 60 },
+  { name: 'three.js',     level: 50 },
+  { name: 'node.js',      level: 50 },
+  { name: 'rust',         level: 55 },
 ]
 
 function SkillCard({ skill, delay }: { skill: Skill; delay: number }) {
@@ -80,7 +91,7 @@ function SkillCard({ skill, delay }: { skill: Skill; delay: number }) {
           letterSpacing: '0.18em',
           color: 'var(--text-dim)',
         }}>
-          {skill.label}
+          {getLabel(skill.level)}
         </span>
         <span style={{
           fontFamily: "'Space Mono', monospace",
@@ -140,7 +151,7 @@ export default function Skills() {
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
       }}>
-        {SKILLS.map((skill, i) => (
+        {[...SKILLS].sort((a, b) => b.level - a.level).map((skill, i) => (
           <SkillCard key={skill.name} skill={skill} delay={i * 0.05} />
         ))}
       </div>
