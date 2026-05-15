@@ -103,7 +103,7 @@ function Card({ project, delay }: { project: typeof PROJECTS[number]; delay: num
     <motion.a
       ref={ref}
       href={project.url}
-      target={project.url !== '#' ? '_blank' : undefined}
+      target="_blank"
       rel="noreferrer"
       className="project-card"
       initial={{ opacity: 0, y: 14 }}
