@@ -8,7 +8,7 @@ const PROJECTS = [
     tag: 'web · react · ts',
     title: 'aaq-portfolio',
     desc: 'this site. a dark monospace portfolio with brutalist type hierarchy, three.js wireframe geometry on project cards, and an editorial grid layout. built with react, vite, and tailwind.',
-    icon: 'circle' as const,
+    icon: 'icosa' as const,
     url: 'https://github.com/aakwsp/aaq-portfolio',
   },
   {
@@ -16,41 +16,53 @@ const PROJECTS = [
     tag: 'tool · next.js · gemini ai',
     title: 'aaq-job-tracker',
     desc: 'syncs your gmail with gemini ai to auto-extract job applications, track statuses, and surface an email timeline per company. sqlite backend, full manual editing, no spreadsheet required.',
-    icon: 'square' as const,
+    icon: 'cube' as const,
     url: 'https://github.com/aakwsp/aaq-job-tracker',
   },
   {
     id: '03',
-    tag: 'discord · bot · wip',
-    title: 'aaq-valokwsp',
-    desc: 'a valorant stat tracker for discord. pulls live match history and player stats, surfaced directly in your server without leaving the app.',
-    icon: 'triangle' as const,
-    url: 'https://github.com/aakwsp/valokwsp',
+    tag: 'tool · python · cli',
+    title: 'aaq-anki-xlsx-importer',
+    desc: 'imports flashcards from an excel spreadsheet into anki via ankiconnect. maps columns to note fields by letter or header name, checks for duplicates, supports dry-run validation, and batches inserts in a single api call.',
+    icon: 'tetra' as const,
+    url: 'https://github.com/aakwsp/aaq-anki-xlsx-importer',
   },
   {
     id: '04',
+    tag: 'discord · bot · wip',
+    title: 'aaq-valokwsp',
+    desc: 'a valorant stat tracker for discord. pulls live match history and player stats, surfaced directly in your server without leaving the app.',
+    icon: 'tri' as const,
+    url: 'https://github.com/aakwsp/valokwsp',
+  },
+  {
+    id: '05',
     tag: 'desktop · electron · wip',
     title: 'aaq-youkwsp',
     desc: 'a personalized youtube music desktop app built to replace the browser tab. cleaner ui, better controls, and a listening experience that actually feels like yours.',
-    icon: 'diamond' as const,
+    icon: 'octa' as const,
     url: 'https://github.com/aakwsp/youkwsp',
   },
 ] as const
 
-type IconType = 'circle' | 'square' | 'triangle' | 'diamond'
+type IconType = 'icosa' | 'cube' | 'tetra' | 'tri' | 'octa' | 'pyramid'
 
 const GEO_MAP: Record<IconType, () => THREE.BufferGeometry> = {
-  circle:   () => new THREE.IcosahedronGeometry(1.1, 1),
-  square:   () => new THREE.BoxGeometry(1.6, 1.6, 1.6),
-  triangle: () => new THREE.ConeGeometry(1.1, 2.0, 3),
-  diamond:  () => new THREE.OctahedronGeometry(1.3),
+  icosa:   () => new THREE.IcosahedronGeometry(1.2, 0),
+  cube:    () => new THREE.BoxGeometry(1.6, 1.6, 1.6),
+  tetra:   () => new THREE.TetrahedronGeometry(1.4),
+  tri:     () => new THREE.ConeGeometry(1.1, 2.0, 3),
+  octa:    () => new THREE.OctahedronGeometry(1.3),
+  pyramid: () => new THREE.ConeGeometry(1.1, 1.8, 4),
 }
 
 const SPD_MAP: Record<IconType, [number, number, number]> = {
-  circle:   [0.00134, 0.002, 0.00066],
-  square:   [0.001, 0.00134, 0.0008],
-  triangle: [0.00134, 0.001, 0.0012],
-  diamond:  [0.00166, 0.00134, 0.001],
+  icosa:   [0.00134, 0.002,  0.00066],
+  cube:    [0.001,   0.00134,0.0008],
+  tetra:   [0.0014,  0.002,  0.001],
+  tri:     [0.00134, 0.001,  0.0012],
+  octa:    [0.00166, 0.00134,0.001],
+  pyramid: [0.0012,  0.00166,0.00084],
 }
 
 function GeoIcon({ type }: { type: IconType }) {
@@ -95,7 +107,7 @@ function GeoIcon({ type }: { type: IconType }) {
   return <canvas ref={ref} style={{ display: 'block', width: 96, height: 96 }} />
 }
 
-function Card({ project, delay }: { project: typeof PROJECTS[number]; delay: number }) {
+function Card({ project, delay, span }: { project: typeof PROJECTS[number]; delay: number; span?: boolean }) {
   const ref  = useRef<HTMLAnchorElement>(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
@@ -117,6 +129,7 @@ function Card({ project, delay }: { project: typeof PROJECTS[number]; delay: num
         overflow: 'hidden',
         transition: 'background 0.15s ease',
         minHeight: 220,
+        ...(span ? { gridColumn: 'span 2' } : {}),
       }}
     >
       {/* tag */}
@@ -222,7 +235,7 @@ export default function Projects() {
         background: 'var(--gap)',
       }}>
         {PROJECTS.map((p, i) => (
-          <Card key={p.id} project={p} delay={i * 0.06} />
+          <Card key={p.id} project={p} delay={i * 0.06} span={i === PROJECTS.length - 1 && PROJECTS.length % 2 !== 0} />
         ))}
       </div>
 
